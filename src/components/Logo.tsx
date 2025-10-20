@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useId } from 'react';
 
 interface LogoProps {
   layout?: 'icon' | 'vertical' | 'horizontal';
@@ -19,6 +19,9 @@ const layoutClasses = {
 }
 
 export function Logo({ layout = 'vertical', size = 'md', className = '' }: LogoProps) {
+  const id = useId();
+  const gradientId = `logo-gradient-${id}`;
+  
   const sClass = sizeClasses[size];
   const lClass = layoutClasses[layout];
 
@@ -32,7 +35,7 @@ export function Logo({ layout = 'vertical', size = 'md', className = '' }: LogoP
         aria-hidden="true"
       >
         <defs>
-          <linearGradient id="logo-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <linearGradient id={gradientId} x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" stopColor="#4338CA" /> 
             <stop offset="100%" stopColor="#22D3EE" />
           </linearGradient>
@@ -41,9 +44,9 @@ export function Logo({ layout = 'vertical', size = 'md', className = '' }: LogoP
           fillRule="evenodd" 
           clipRule="evenodd" 
           d="M24 44C35.0457 44 44 35.0457 44 24C44 12.9543 35.0457 4 24 4C12.9543 4 4 12.9543 4 24C4 35.0457 12.9543 44 24 44ZM24 40C32.8366 40 40 32.8366 40 24C40 15.1634 32.8366 8 24 8C15.1634 8 8 15.1634 8 24C8 32.8366 15.1634 40 24 40Z" 
-          fill="url(#logo-gradient)" 
+          fill={`url(#${gradientId})`}
         />
-        <path d="M36 36L26 26" stroke="url(#logo-gradient)" strokeWidth="5" strokeLinecap="round" />
+        <path d="M36 36L26 26" stroke={`url(#${gradientId})`} strokeWidth="5" strokeLinecap="round" />
       </svg>
       <span className={`${sClass.text} ${lClass.text} tracking-tight bg-gradient-to-r from-indigo-700 to-cyan-500 dark:from-indigo-500 dark:to-cyan-400 text-transparent bg-clip-text`}>
         QuliQaT
