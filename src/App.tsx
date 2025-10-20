@@ -81,7 +81,7 @@ function App(): React.ReactNode {
   });
   
   // State for the new intro animation sequence
-  const [introPhase, setIntroPhase] = useState<'start' | 'fly' | 'fade' | 'hidden'>('start');
+  const [introPhase, setIntroPhase] = useState<'start' | 'fly' | 'hidden'>('start');
 
   const [isTopicsLoading, setIsTopicsLoading] = useState<Record<string, boolean>>({});
   const [error, setError] = useState<string | null>(null);
@@ -107,20 +107,13 @@ function App(): React.ReactNode {
       setIntroPhase('fly');
     }, 2000);
 
-    // Phase 2: 'fly' animation takes 1s. Just before it ends (at 2.9s total),
-    // start the cross-fade between the animated logo and the real header logo.
-    const fadeTimer = setTimeout(() => {
-      setIntroPhase('fade');
-    }, 2900);
-
-    // Phase 3: After the fades complete (at 3.5s total), remove the intro component.
+    // Phase 2: After fly animation completes (total 3s), hide the intro component.
     const hideTimer = setTimeout(() => {
       setIntroPhase('hidden');
-    }, 3500);
+    }, 3000);
 
     return () => {
       clearTimeout(flyTimer);
-      clearTimeout(fadeTimer);
       clearTimeout(hideTimer);
     };
   }, []); // Run only on mount
@@ -422,7 +415,7 @@ function App(): React.ReactNode {
           theme={theme} 
           onToggleTheme={toggleTheme} 
           onOpenMenu={() => setIsMenuOpen(true)}
-          logoVisible={introPhase === 'fade' || introPhase === 'hidden'}
+          logoVisible={introPhase === 'hidden'}
         />
 
         <Sidebar isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)}>
