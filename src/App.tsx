@@ -410,7 +410,7 @@ function App(): React.ReactNode {
 
   return (
     <>
-      {introPhase !== 'hidden' && <IntroAnimation phase={introPhase} />}
+      <IntroAnimation phase={introPhase} />
 
       <div className={`
         h-screen flex flex-col font-sans 
