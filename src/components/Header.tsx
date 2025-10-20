@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Logo } from './Logo';
 
@@ -42,8 +41,8 @@ export function Header({
   return (
     <header className="bg-white dark:bg-gray-900/80 backdrop-blur-lg sticky top-0 z-50 transition-colors duration-300">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative flex items-center justify-between h-16">
-          <div className="flex items-center">
+        <div className="flex items-center justify-between h-16">
+          <div className="flex-1 flex justify-start">
             <button
                 onClick={onOpenMenu}
                 className="p-2 rounded-full text-slate-500 dark:text-slate-400 hover:bg-slate-200/70 dark:hover:bg-slate-800/70 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-slate-900 focus-visible:ring-blue-500 transition-colors"
@@ -54,14 +53,14 @@ export function Header({
           </div>
 
           <div className={`
-            absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center
+            flex items-center justify-center
             transition-opacity duration-500 ease-in-out
             ${logoVisible ? 'opacity-100' : 'opacity-0'}
           `}>
             <Logo size="md" layout="horizontal" />
           </div>
           
-          <div className="flex items-center gap-2">
+          <div className="flex-1 flex justify-end">
             <button
                 onClick={onToggleTheme}
                 className="p-2 rounded-full text-slate-500 dark:text-slate-400 hover:bg-slate-200/70 dark:hover:bg-slate-800/70 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-slate-900 focus-visible:ring-blue-500 transition-colors"
