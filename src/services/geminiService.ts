@@ -392,7 +392,7 @@ export function startChatSession(standard: Standard, subject: Subject, chapter?:
     }
 
     const chat: Chat = ai.chats.create({
-        model: 'gemini-2.push -u origin main-flash',
+        model: 'gemini-2.5-flash',
         config: {
             systemInstruction: systemInstruction,
         },
