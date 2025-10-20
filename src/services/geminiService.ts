@@ -2,11 +2,16 @@ import { GoogleGenAI, Type, Chat, Modality } from "@google/genai";
 import type { QuestionAnswer, Standard, ChatSession, MCQ, Subject, UnitTest } from '../types';
 import { CHAPTERS, TTSVoice } from "../constants";
 
-if (!process.env.API_KEY) {
-    throw new Error("API_KEY environment variable not set");
+// The Vite config (`vite.config.ts`) will replace `process.env.API_KEY`
+// with the value from your Vercel environment variable `VITE_API_KEY`.
+const apiKey = process.env.API_KEY;
+
+if (!apiKey) {
+    // This error message is now more helpful for deployment.
+    throw new Error("VITE_API_KEY environment variable not set. Please set it in your Vercel project settings.");
 }
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+const ai = new GoogleGenAI({ apiKey: apiKey });
 
 const getAnswerPrompt = (topic: string, chapterName: string, standard: Standard, subject: Subject): string => {
   const basePrompt = `You are a friendly ${subject} tutor for ${standard} students in India.
@@ -387,7 +392,7 @@ export function startChatSession(standard: Standard, subject: Subject, chapter?:
     }
 
     const chat: Chat = ai.chats.create({
-        model: 'gemini-2.5-flash',
+        model: 'gemini-2.push -u origin main-flash',
         config: {
             systemInstruction: systemInstruction,
         },
