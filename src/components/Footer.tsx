@@ -1,4 +1,5 @@
 
+
 import React, { useState, useEffect } from 'react';
 import type { Standard } from '../types';
 import { STANDARDS } from '../constants';
@@ -158,7 +159,7 @@ export function Footer({ selectedStandard }: FooterProps): React.ReactNode {
               <span>. All Rights Reserved.</span>
             </div>
             <p>
-              Developed by <strong>Syed Mohammed Idris</strong> and tested by saleemuddin(PCMB) Falcon Institute Mysore Road Branch. | <button onClick={() => setIsModalOpen(true)} className="font-semibold text-blue-600 dark:text-blue-400 hover:underline">Share Feedback</button>
+              Developed by <strong>Syed Mohammed Idris</strong> and tested by <strong>saleemuddin(PCMB)</strong> Falcon Institute Mysore Road Branch. | <button onClick={() => setIsModalOpen(true)} className="font-semibold text-blue-600 dark:text-blue-400 hover:underline">Share Feedback</button>
             </p>
         </div>
       </div>
