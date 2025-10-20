@@ -2,7 +2,7 @@ import React from 'react';
 import { Logo } from './Logo';
 
 interface IntroAnimationProps {
-  phase: 'start' | 'fly' | 'fade';
+  phase: 'start' | 'fly' | 'fade' | 'hidden';
 }
 
 export function IntroAnimation({ phase }: IntroAnimationProps): React.ReactNode {
@@ -13,7 +13,8 @@ export function IntroAnimation({ phase }: IntroAnimationProps): React.ReactNode 
       className={`
         fixed inset-0 z-[100]
         transition-opacity duration-500 ease-in-out
-        ${phase === 'fade' ? 'opacity-0 pointer-events-none' : 'opacity-100'}
+        ${phase === 'fade' || phase === 'hidden' ? 'opacity-0 pointer-events-none' : 'opacity-100'}
+        ${phase === 'hidden' ? 'hidden' : ''}
       `}
       aria-hidden="true"
     >
