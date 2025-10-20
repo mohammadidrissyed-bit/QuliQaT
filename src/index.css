@@ -1,0 +1,210 @@
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* For IE and Edge */
+  -ms-overflow-style: none;  
+  /* ADDED FOR SMOOTH THEME TRANSITIONS */
+  transition-property: color, background-color;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+/* For Firefox */
+html {
+    scrollbar-width: none;
+}
+
+/* For Chrome, Safari, and Opera */
+::-webkit-scrollbar {
+    display: none;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+@keyframes pulse-fade-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-pulse-fade-in {
+  animation: pulse-fade-in 1.5s ease-out forwards;
+}
+
+
+/* OLED "Pitch Black" Mode Theme - REWRITTEN FOR TRUE BLACK */
+html.oled-mode {
+    --bg-color: #000000;
+    --panel-color: #000000; /* Panels are also pure black */
+    --border-color: #27272a; /* A very dark gray for subtle borders */
+    --hover-bg-color: #18181b; /* A very subtle hover effect */
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --accent-color: #22d3ee; /* Bright cyan for accents */
+    --accent-hover-color: #67e8f9;
+    --accent-text-color: #111827; /* Dark text on bright buttons */
+    --gradient-from-color: var(--accent-color);
+    --gradient-to-color: #0ea5e9;
+    --ring-color: var(--accent-color);
+}
+
+.oled-mode body {
+    background-color: var(--bg-color) !important;
+    color: var(--text-primary) !important;
+}
+
+/* === GENERAL OVERRIDES === */
+
+/* Backgrounds: target all light-mode backgrounds */
+.oled-mode .bg-white,
+.oled-mode .bg-slate-50,
+.oled-mode .bg-slate-100,
+.oled-mode .bg-slate-200,
+.oled-mode .bg-red-50 {
+    background-color: var(--panel-color) !important;
+}
+
+/* Borders: target all light-mode borders */
+.oled-mode .border-slate-200,
+.oled-mode .border-slate-300,
+.oled-mode .border-red-200 {
+    border-color: var(--border-color) !importan
+t;
+}
+
+/* Text: target all light-mode text colors */
+.oled-mode .text-slate-900,
+.oled-mode .text-slate-800,
+.oled-mode .text-slate-700 {
+    color: var(--text-primary) !important;
+}
+
+.oled-mode .text-slate-600,
+.oled-mode .text-slate-500,
+.oled-mode .placeholder-slate-500::placeholder {
+    color: var(--text-secondary) !important;
+}
+
+/* Accents (Blue -> Cyan) */
+.oled-mode .text-blue-600 {
+    color: var(--accent-color) !important;
+}
+.oled-mode .bg-blue-600 {
+    background-color: var(--accent-color) !important;
+    color: var(--accent-text-color) !important;
+}
+.oled-mode .bg-blue-600:hover {
+    background-color: var(--accent-hover-color) !important;
+}
+.oled-mode .border-blue-500 {
+    border-color: var(--accent-color) !important;
+}
+.oled-mode .accent-blue-600 {
+    accent-color: var(--accent-color) !important;
+}
+.oled-mode .focus\\:ring-blue-500:focus,
+.oled-mode .focus-visible\\:ring-blue-500:focus-visible {
+    --tw-ring-color: var(--ring-color) !important;
+}
+
+/* Header Gradient */
+.oled-mode .from-blue-600,
+.oled-mode .dark\\:from-blue-400 {
+    --tw-gradient-from: var(--gradient-from-color) var(--tw-gradient-from-position);
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, transparent);
+}
+.oled-mode .to-cyan-400,
+.oled-mode .dark\\:to-cyan-300 {
+    --tw-gradient-to: var(--gradient-to-color) var(--tw-gradient-to-position);
+}
+
+/* Hovers */
+.oled-mode .hover\\:bg-slate-100:hover,
+.oled-mode .hover\\:bg-slate-200:hover,
+.oled-mode .hover\\:bg-slate-200\\/70:hover,
+.oled-mode .hover\\:bg-white:hover {
+    background-color: var(--hover-bg-color) !important;
+}
+
+
+/* === COMPONENT-SPECIFIC OVERRIDES === */
+
+/* Header: special backdrop class */
+.oled-mode .dark\\:bg-gray-900\\/80 {
+    background-color: rgba(0,0,0,0.8) !important;
+}
+
+/* Chat Box & Quiz Options */
+.oled-mode .bg-slate-200 { /* Model response bubble */
+    background-color: #1e293b !important; /* slate-800 */
+}
+.oled-mode .bg-blue-100 { /* Selected MCQ option */
+    background-color: #083344 !important; /* cyan-950 */
+    color: var(--accent-hover-color) !important;
+}
+
+/* Generated Content */
+.oled-mode .prose-p\\:text-slate-600 p {
+    color: var(--text-secondary) !important;
+}
+.oled-mode .prose-strong\\:text-slate-700 strong {
+    color: var(--text-primary) !important;
+}
+
+/* Quiz Card Results */
+.oled-mode .bg-green-100 { background-color: #052e16 !important; /* green-950 */ }
+.oled-mode .text-green-800 { color: #86efac !important; /* green-300 */ }
+.oled-mode .border-green-500 { border-color: #22c55e !important; /* green-500 */ }
+.oled-mode .bg-red-100 { background-color: #450a0a !important; /* red-950 */ }
+.oled-mode .text-red-800 { color: #fca5a5 !important; /* red-300 */ }
+.oled-mode .border-red-500 { border-color: #ef4444 !important; /* red-500 */ }
+.oled-mode .text-slate-500.dark\\:text-slate-400 { color: var(--text-secondary) !important; } /* Fixes MCQ button text */
+
+/* --- Custom Animations & Styles --- */
+
+/* Custom scrollbar for topic list */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: rgba(156, 163, 175, 0.5); /* gray-400 with 50% opacity */
+    border-radius: 20px;
+    border: 3px solid transparent;
+}
+.dark .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: rgba(71, 85, 105, 0.7); /* slate-600 with 70% opacity */
+}
+
+@keyframes slide-in-stagger {
+  from {
+    opacity: 0;
+    transform: translateX(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-stagger-in {
+  /* Use 'backwards' to apply 'from' styles before animation starts */
+  animation: slide-in-stagger 0.4s ease-out backwards;
+}
